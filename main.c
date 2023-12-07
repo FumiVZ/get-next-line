@@ -6,7 +6,7 @@
 /*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:50:40 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/01 14:59:08 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2023/12/06 18:36:41 by vzuccare         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 int main(void)
 {
 	int fd;
+	size_t i = 0;
+	char *line;
 
 	fd = open("test.txt", O_RDONLY);
 	if (fd == -1)
@@ -24,6 +26,17 @@ int main(void)
 		printf("Failed to open the file.\n");
 		return 1;
 	}
-	get_next_line(fd);
+	while (i < 5)
+	{
+		line = get_next_line(fd);
+		printf("%s\n", line);
+		free(line);
+		i++;
+	}
+	// printf("%s\n", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
+	// printf("%s\n", get_next_line(fd));
 	return 0;
+	
 }
