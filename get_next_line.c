@@ -6,7 +6,7 @@
 /*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:50:02 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/13 14:35:46 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2023/12/13 19:35:24 by vzuccare         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ char	*read_and_process_lines(int fd, char *buff, char *stash, int ret)
 		if (ft_strlen(stash) == 0)
 		{
 			ret = read(fd, stash, BUFFER_SIZE);
-			if (ret == -1)
+			if (ret < 0)
+			{
+				free(buff);
 				return (NULL);
+			}
 			else if (ret == 0 && ft_strlen(stash) == 0)
 				return (buff);
 			else if (ret == 0 && ft_strlen(stash) != 0)
@@ -69,13 +72,13 @@ char	*get_next_line(int fd)
 	static char	stash[BUFFER_SIZE];
 	char		*buff;
 
-	clear_until_n(stash);
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, stash, 0) == -1)
+	if (read(fd, stash, 0))
 	{
 		if (strlen(stash) != 0)
 			full_clean(stash);
 		return (NULL);
 	}
+	clear_until_n(stash);
 	buff = NULL;
 	buff = read_and_process_lines(fd, buff, stash, 1);
 	if (!buff)
