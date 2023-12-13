@@ -6,7 +6,7 @@
 /*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:50:40 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/06 18:36:41 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2023/12/13 15:27:34 by vzuccare         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,14 @@ int main(void)
 		printf("Failed to open the file.\n");
 		return 1;
 	}
-	while (i < 5)
+	while (i < 2)
 	{
 		line = get_next_line(fd);
-		printf("%s\n", line);
-		free(line);
+		printf("%s",  line);
+		if (line)
+			free(line);
 		i++;
 	}
-	// printf("%s\n", get_next_line(fd));
-	// printf("%s\n", get_next_line(fd));
-	// printf("%s\n", get_next_line(fd));
-	// printf("%s\n", get_next_line(fd));
 	return 0;
 	
 }
