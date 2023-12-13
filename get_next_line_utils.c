@@ -6,7 +6,7 @@
 /*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:17:22 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/13 15:17:14 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2023/12/13 18:51:10 by vzuccare         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,9 @@ char	*ft_strjoin_n(char *s1, char *s2)
 
 	i = 0;
 	size = ft_strlen(s1) + len_line((char *)s2) + 1;
-	str = malloc((size + 1) * sizeof(char));
+	str = malloc((size) * sizeof(char));
 	if (!str)
-	{
-		if (s1)
-			free(s1);
-		return (NULL);
-	}
+		return (free(s1), NULL);
 	i = -1;
 	if (s1)
 		while (s1[++i])
