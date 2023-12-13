@@ -6,7 +6,7 @@
 /*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:52:08 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/05 15:12:10 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2023/12/13 14:18:01 by vzuccare         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 
 char	*get_next_line(int fd);
 char	*ft_strdup_line(char *dst, char *src);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin_n(char *s1, char *s2);
 char	*ft_strchr( const char *string, int searchedChar );
+char	*strjoin_free(char *s1, char *s2);
+size_t	ft_strlen(const char *str);
+void	full_clean(char *str);
 
 #endif
