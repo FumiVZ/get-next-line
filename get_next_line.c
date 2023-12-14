@@ -6,7 +6,7 @@
 /*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:50:02 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/13 19:35:24 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2023/12/14 14:13:53 by vzuccare         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*read_and_process_lines(int fd, char *buff, char *stash, int ret)
 		if (!buff)
 			return (NULL);
 		if (ft_strchr(buff, '\n'))
-			break ;
+			return (buff);
 		clear_until_n(stash);
 	}
 	return (buff);
@@ -74,7 +74,7 @@ char	*get_next_line(int fd)
 
 	if (read(fd, stash, 0))
 	{
-		if (strlen(stash) != 0)
+		if (ft_strlen(stash) != 0)
 			full_clean(stash);
 		return (NULL);
 	}
@@ -83,7 +83,7 @@ char	*get_next_line(int fd)
 	buff = read_and_process_lines(fd, buff, stash, 1);
 	if (!buff)
 	{
-		if (strlen(stash) != 0)
+		if (ft_strlen(stash) != 0)
 			full_clean(stash);
 		return (NULL);
 	}
