@@ -6,12 +6,15 @@
 /*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:50:02 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/14 14:13:53 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2023/12/19 13:47:36 by vzuccare         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "get_next_line.h"
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1024
+#endif
 
 void	full_clean(char *str)
 {
@@ -72,12 +75,6 @@ char	*get_next_line(int fd)
 	static char	stash[BUFFER_SIZE];
 	char		*buff;
 
-	if (read(fd, stash, 0))
-	{
-		if (ft_strlen(stash) != 0)
-			full_clean(stash);
-		return (NULL);
-	}
 	clear_until_n(stash);
 	buff = NULL;
 	buff = read_and_process_lines(fd, buff, stash, 1);
