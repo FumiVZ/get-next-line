@@ -6,7 +6,7 @@
 /*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:50:02 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/20 18:33:45 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2023/12/22 12:33:55 by vzuccare         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*read_and_process_lines(int fd, char *buff, char *stash, int ret)
 
 char	*get_next_line(int fd)
 {
-	static char	stash[BUFFER_SIZE];
+	static char	stash[BUFFER_SIZE + 1];
 	char		*buff;
 
 	clear_until_n(stash);
