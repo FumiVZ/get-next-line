@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzuccare <vzuccare@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vincent <vincent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:50:02 by vzuccare          #+#    #+#             */
-/*   Updated: 2023/12/13 19:35:24 by vzuccare         ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 18:16:35 by vincent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "get_next_line.h"
+
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+#endif
 
 void	full_clean(char *str)
 {
@@ -69,7 +73,7 @@ char	*read_and_process_lines(int fd, char *buff, char *stash, int ret)
 
 char	*get_next_line(int fd)
 {
-	static char	stash[BUFFER_SIZE];
+	static char	stash[BUFFER_SIZE + 1];
 	char		*buff;
 
 	if (read(fd, stash, 0))
